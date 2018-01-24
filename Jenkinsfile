@@ -6,9 +6,18 @@ pipeline {
         echo 'Initialize'
       }
     }
-    stage('Stage1') {
-      steps {
-        echo 'First step'
+    stage('Build') {
+      parallel {
+        stage('Build') {
+          steps {
+            sh 'echo Build'
+          }
+        }
+        stage('Performance') {
+          steps {
+            sh 'echo Performance'
+          }
+        }
       }
     }
     stage('Stage2') {
