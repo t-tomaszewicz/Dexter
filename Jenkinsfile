@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       parallel {
-        stage('Build') {
+        stage('Build1') {
           steps {
             sh 'echo Build'
           }
@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Stage2') {
       parallel {
-        stage('Stage2') {
+        stage('Step1') {
           steps {
             sleep 120
             sh 'echo date'
@@ -28,6 +28,11 @@ pipeline {
             sh 'echo step2'
           }
         }
+      }
+    }
+    stage('Finalize') {
+      steps {
+        echo 'Finalize'
       }
     }
   }
