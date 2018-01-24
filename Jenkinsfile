@@ -6,5 +6,15 @@ pipeline {
         echo 'Initialize'
       }
     }
+    stage('Stage1') {
+      steps {
+        echo 'First step'
+      }
+    }
+    stage('Stage2') {
+      steps {
+        sleep 120
+      }
+    }
   }
 }
