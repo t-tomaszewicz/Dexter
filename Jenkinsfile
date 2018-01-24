@@ -1,11 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Initialize') {
-      steps {
-        echo 'Initialize'
-      }
-    }
     stage('Build') {
       parallel {
         stage('Build') {
@@ -21,8 +16,18 @@ pipeline {
       }
     }
     stage('Stage2') {
-      steps {
-        sleep 120
+      parallel {
+        stage('Stage2') {
+          steps {
+            sleep 120
+            sh 'echo date'
+          }
+        }
+        stage('step2') {
+          steps {
+            sh 'echo step2'
+          }
+        }
       }
     }
   }
