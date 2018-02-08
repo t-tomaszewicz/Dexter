@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Checkout') {
+    stage('Echo') {
       steps {
-        git(url: 'github.com/KarolAntczak/Dexter', branch: 'master', changelog: true)
+        echo 'Hello world'
       }
     }
   }
