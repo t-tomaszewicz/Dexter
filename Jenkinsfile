@@ -2,14 +2,36 @@ pipeline {
   agent any
   stages {
     stage('Echo') {
-      steps {
-        echo 'Hello world'
-        echo 'second message'
+      parallel {
+        stage('Echo') {
+          steps {
+            echo 'Hello world'
+          }
+        }
+        stage('Echo2') {
+          steps {
+            sh 'echo "Message2"'
+          }
+        }
       }
     }
     stage('Build') {
+      parallel {
+        stage('Build') {
+          steps {
+            sh 'gradle build'
+          }
+        }
+        stage('Compile') {
+          steps {
+            echo 'echo "Build"'
+          }
+        }
+      }
+    }
+    stage('Finalize') {
       steps {
-        sh 'gradle build'
+        sh 'echo "Finalized"'
       }
     }
   }
