@@ -13,8 +13,7 @@ pipeline {
       }
     }
   }
-  tools {
-    maven 'apache-maven-3.0.1'
+  tools {    
     gradle 'gradle-4.5.1'
   }
 }
