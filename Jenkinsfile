@@ -6,7 +6,6 @@ pipeline {
         stage('Build1') {
           steps {
             sh 'echo Build'
-            build 'gradle dexter'
           }
         }
         stage('Performance') {
