@@ -19,7 +19,7 @@ pipeline {
       parallel {
         stage('Build') {
           steps {
-            cd 'project'            
+            sh 'cd project'            
             sh 'gradle build'
           }
         }
