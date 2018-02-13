@@ -7,7 +7,7 @@ pipeline {
         echo 'second message'
       }
     }
-    stage('Example') {
+    stage('Build') {
       steps {
         sh 'gradle build'
       }
