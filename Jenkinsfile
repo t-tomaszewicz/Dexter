@@ -19,12 +19,16 @@ pipeline {
       parallel {
         stage('Build') {
           steps {
-            sh 'gradle build -p project'
+            cd 'project'
+            gradle 'build'
+
           }
         }
         stage('Compile') {
           steps {
             echo 'echo "Build"'
+            sh 'cd project'
+            sh 'gradle build'
           }
         }
       }
