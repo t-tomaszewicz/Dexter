@@ -34,11 +34,6 @@ pipeline {
         sh 'echo "Finalized"'
       }
     }
-    stage('Reports') {
-      steps {
-        echo 'report created'
-      }
-    }
   }
   tools {
     gradle 'gradle-4.5.1'
