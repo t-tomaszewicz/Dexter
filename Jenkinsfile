@@ -16,21 +16,11 @@ pipeline {
       }
     }
     stage('Build') {
-      parallel {
-        stage('Build') {
-          steps {
-            dir(path: 'project') {
-              sh 'gradle build'
-            }
-            
-            sh 'gradle build'
-          }
+      steps {
+        dir(path: 'project') {
+          sh 'gradle build'
         }
-        stage('Compile') {
-          steps {
-            echo 'echo "Build"'
-          }
-        }
+        
       }
     }
     stage('Finalize') {
