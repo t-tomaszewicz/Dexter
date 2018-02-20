@@ -18,7 +18,7 @@ pipeline {
     stage('Build') {
       steps {
         dir(path: 'project') {
-          sh 'gradle build'
+          sh 'gradle build -x test'
         }
         
       }
