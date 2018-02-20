@@ -19,14 +19,16 @@ pipeline {
       parallel {
         stage('Build') {
           steps {
-            dir 'project'
+            dir(path: 'project') {
+              sh 'gradle build'
+            }
+            
             sh 'gradle build'
           }
         }
         stage('Compile') {
           steps {
             echo 'echo "Build"'
-
           }
         }
       }
@@ -40,4 +42,4 @@ pipeline {
   tools {
     gradle 'gradle-4.5.1'
   }
-} 
+}
