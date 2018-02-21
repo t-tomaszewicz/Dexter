@@ -25,7 +25,7 @@ echo "tt shell message"'''
         stage('UnitTests') {
           steps {
             dir(path: 'project') {
-              sh 'gradle build'
+              sh 'gradle test'
             }
             
           }
