@@ -1,18 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('Echo') {
-      parallel {
-        stage('Echo') {
-          steps {
-            echo 'Hello world'
-          }
-        }
-        stage('Echo2') {
-          steps {
-            sh 'echo "Message2"'
-          }
-        }
+    stage('InitStep') {
+      steps {
+        sh '''java -version;
+echo "tt shell message"'''
       }
     }
     stage('Build') {
@@ -23,9 +15,26 @@ pipeline {
         
       }
     }
-    stage('Finalize') {
+    stage('UT') {
+      parallel {
+        stage('UTmessage') {
+          steps {
+            sh 'echo "tt UT message"'
+          }
+        }
+        stage('UnitTests') {
+          steps {
+            dir(path: 'project') {
+              sh 'gradle build'
+            }
+            
+          }
+        }
+      }
+    }
+    stage('Finish') {
       steps {
-        sh 'echo "Finalized"'
+        sh 'echo "tt The end"'
       }
     }
   }
