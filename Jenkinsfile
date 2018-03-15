@@ -25,7 +25,7 @@ echo "tt shell message"'''
         stage('UnitTests') {
           steps {
             dir(path: 'project') {
-              sh 'gradle test --tests "com.samsung.sec.dexter.metrics.ClassAndMethodCountCheckTest" --stacktrace'
+              sh 'gradle test '
             }
             
           }
